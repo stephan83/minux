@@ -4,13 +4,14 @@ Dead simple state container with minimal boilerplate.
 
 ## The gist
 
+### Synchronous
+
 ```javascript
 import createContainer from './src/createContainer';
 
 // Container initial state
 const initialState = {
-  items: [],
-  loading: false
+  items: []
 };
 
 // A synchronous mutator
@@ -20,9 +21,41 @@ function add(val) {
   this.setState(state);
 }
 
+// Create a container for our todo list
+const todo = createContainer({add}, initialState);
+
+// Log the state when it changes
+todo.subscribe(console.log);
+
+// Bind actions to our todo container
+const bound = todo.bind();
+
+// Call some sync functions
+bound.add('Item 1');
+bound.add('Item 2');
+bound.add('Item 3');
+
+// Output:
+// { items: [ 'Item 1', 'Item 2', 'Item 3' ] }
+```
+
+### Asynchronous
+
+Nothing changes really.
+
+```javascript
+import createContainer from './src/createContainer';
+
+// Container initial state
+const initialState = {
+  items: [],
+  loading: false
+};
+
 // An asynchronous mutator
 function fetch() {
   this.setState({...this.getState(), loading: true});
+  // Simulate a remote fetch
   setTimeout(() => {
     this.setState({
       items: ['Remote item 1', 'Remote item 2'],
@@ -32,24 +65,19 @@ function fetch() {
 }
 
 // Create a container for our todo list
-const todo = createContainer({add, fetch}, initialState);
+const todo = createContainer({fetch}, initialState);
 
-// Log the state everytime it changes
+// Log the state when it changes
 todo.subscribe(console.log);
 
 // Bind actions to our todo container
-const actions = todo.bind();
-
-// Call some sync functions
-actions.add('Item 1');
-actions.add('Item 2');
-actions.add('Item 3');
+const bound = todo.bind();
 
 // Call an async function
-actions.fetch();
+bound.fetch();
 
 // Output:
-// { items: [ 'Item 1', 'Item 2', 'Item 3' ], loading: true }
+// { items: [], loading: true }
 // { items: [ 'Remote item 1', 'Remote item 2' ], loading: false }
 ```
 
