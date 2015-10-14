@@ -30,12 +30,12 @@ export default function createContainer(handlers, initialState) {
 
   const context = {getState, setState};
 
-  const bindActions = (object = {}) => {
+  const bind = (object = {}) => {
     Object.keys(handlers).forEach(key => {
       object[key] = context[key] = (...args) => handlers[key].apply(context, args);
     });
     return object;
   };
 
-  return {subscribe, bindActions};
+  return {subscribe, bind};
 }

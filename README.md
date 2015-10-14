@@ -1,3 +1,10 @@
+# Minux
+
+Dead simple state container with minimal boilerplate.
+
+## The gist
+
+```javascript
 import createContainer from './src/createContainer';
 
 // Container initial state
@@ -44,3 +51,9 @@ actions.fetch();
 // Output:
 // { items: [ 'Item 1', 'Item 2', 'Item 3' ], loading: true }
 // { items: [ 'Remote item 1', 'Remote item 2' ], loading: false }
+```
+
+## TODO
+
+* Combiner
+* React example
