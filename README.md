@@ -53,7 +53,47 @@ actions.fetch();
 // { items: [ 'Remote item 1', 'Remote item 2' ], loading: false }
 ```
 
+## API
+
+The API is minimal.
+
+### Container
+
+#### createContainer(handlers, initialState)
+
+Creates a container for the given handlers and initial state.
+
+#### Container#subscribe(listener)
+
+Subscribes to state changes. `listener` receives the new state. Returns a
+function to unsubscribe.
+
+The listener is called once per tick at most.
+
+#### Container#bind(object = {})
+
+Binds the store's handlers to any object. Returns the object.
+
+In addition, `Container#bind` is called on the context, so handlers can call
+other handlers including themselves.
+
+### HandlerContext
+
+The following context is bound to the handlers when they are executed.
+
+#### HandlerContext#getState()
+
+Returns a clone of the current state.
+
+#### HandlerContext#setState(newState)
+
+Replaces the current state.
+
 ## TODO
 
-* Combiner
+* Composition example
 * React example
+
+## License
+
+MIT
