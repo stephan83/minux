@@ -1,0 +1,14 @@
+{
+  "name": "minux",
+  "version": "0.1.0",
+  "description": "Dead simple state container.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Stephan Florquin",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^5.8.23"
+  }
+}
