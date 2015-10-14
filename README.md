@@ -72,7 +72,7 @@ The listener is called once per tick at most.
 
 #### Container#bind(object = {})
 
-Binds the store's handlers to any object. Returns the object.
+Binds the store's handlers to an object. Returns the object.
 
 ### HandlerContext
 
