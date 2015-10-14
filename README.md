@@ -63,6 +63,10 @@ The API is minimal.
 
 Creates a container for the given handlers and initial state.
 
+#### Container#getState()
+
+Returns a clone of the current state.
+
 #### Container#subscribe(listener)
 
 Subscribes to state changes. `listener` receives the new state. Returns a
@@ -76,7 +80,7 @@ Binds the store's handlers to an object. Returns the object.
 
 ### HandlerContext
 
-The following context is bound to the handlers when they are executed.
+The following context is attached to the handlers when they are executed.
 
 In addition, `Container#bind` is called on the context, so handlers can call
 other handlers including themselves.

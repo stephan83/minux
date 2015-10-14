@@ -39,5 +39,5 @@ export default function createContainer(handlers, initialState) {
 
   bind(context);
 
-  return {subscribe, bind};
+  return {getState, subscribe, bind};
 }
