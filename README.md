@@ -74,12 +74,12 @@ The listener is called once per tick at most.
 
 Binds the store's handlers to any object. Returns the object.
 
-In addition, `Container#bind` is called on the context, so handlers can call
-other handlers including themselves.
-
 ### HandlerContext
 
 The following context is bound to the handlers when they are executed.
+
+In addition, `Container#bind` is called on the context, so handlers can call
+other handlers including themselves.
 
 #### HandlerContext#getState()
 
