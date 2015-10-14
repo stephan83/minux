@@ -1,6 +1,6 @@
 # Minux
 
-Dead simple state container with minimal boilerplate.
+Dead simple state container with minimum boilerplate.
 
 ## The gist
 
