@@ -27,7 +27,7 @@ const todo = createContainer({add}, initialState);
 // Log the state when it changes
 todo.subscribe(console.log);
 
-// Bind actions to our todo container
+// Bind functions to our todo container
 const bound = todo.bind();
 
 // Call some sync functions
@@ -70,7 +70,7 @@ const todo = createContainer({fetch}, initialState);
 // Log the state when it changes
 todo.subscribe(console.log);
 
-// Bind actions to our todo container
+// Bind functions to our todo container
 const bound = todo.bind();
 
 // Call an async function
