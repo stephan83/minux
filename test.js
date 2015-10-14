@@ -1,22 +1,33 @@
-import createStore from './src/createStore';
+import createContainer from './src/createContainer';
 
-const store = createStore({
-  push(val) {
-    const state = this.getState();
-    state.push(val);
-    this.setState(state);
-  },
-  pushAsync(val) {
-    setTimeout(() => {
-      this.push(val);
-    }, 1000);
-  }
-}, []);
+const initialState = {
+  items: [],
+  loading: false
+};
 
-store.subscribe(console.log);
+function add(val) {
+  const state = this.getState();
+  state.items.push(val);
+  this.setState(state);
+}
 
-store.push(1);
-store.push(2);
-store.push(3);
+function fetch() {
+  this.setState({...this.getState(), loading: true});
+  setTimeout(() => {
+    this.setState({
+      items: ['Remote item 1', 'Remote item 2'],
+      loading: false
+    });
+  }, 1000);
+}
 
-store.pushAsync(4);
+const todo = createContainer({add, fetch}, initialState);
+const actions = todo.bindActions();
+
+todo.subscribe(console.log);
+
+actions.add('Item 1');
+actions.add('Item 2');
+actions.add('Item 3');
+
+actions.fetch();
