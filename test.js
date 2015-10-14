@@ -31,15 +31,15 @@ const todo = createContainer({add, fetch}, initialState);
 todo.subscribe(console.log);
 
 // Bind actions to our todo container
-const actions = todo.bind();
+const bound = todo.bind();
 
 // Call some sync
-actions.add('Item 1');
-actions.add('Item 2');
-actions.add('Item 3');
+bound.add('Item 1');
+bound.add('Item 2');
+bound.add('Item 3');
 
 // Call an async function
-actions.fetch();
+bound.fetch();
 
 // Output:
 // { items: [ 'Item 1', 'Item 2', 'Item 3' ], loading: true }

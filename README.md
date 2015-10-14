@@ -40,7 +40,7 @@ todo.subscribe(console.log);
 // Bind actions to our todo container
 const actions = todo.bind();
 
-// Call some sync
+// Call some sync functions
 actions.add('Item 1');
 actions.add('Item 2');
 actions.add('Item 3');
